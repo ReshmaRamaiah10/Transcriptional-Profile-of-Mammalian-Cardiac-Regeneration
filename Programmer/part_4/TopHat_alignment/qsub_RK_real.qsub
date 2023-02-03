@@ -1,0 +1,21 @@
+#!/bin/bash -l
+
+#$ -P bf528
+#$ -cwd
+#$ -j y
+#$ -pe mpi_16_tasks_per_node 16
+
+echo "Running job $JOB_ID"
+echo "Started: $(date +%F)"
+echo "Running in directory: $PWD"
+
+#your commands here
+
+#load needed alignment utilities
+module load samtools bowtie2 boost tophat
+
+#tophat arguments
+tophat -r 200 -G /projectnb2/bf528/project_2/reference/annot/mm9.gtf --segment-length=20 --segment-mismatches=1 --no-novel-juncs -o P0_1_tophat_real -p 16 /projectnb2/bf528/students/rkafrawi/Project_2/Reference/Indexes/mm9 /projectnb2/bf528/users/tinman_2022/project_2/samples/P0_1_1.fastq /projectnb2/bf528/users/tinman_2022/project_2/samples/P0_1_2.fastq   
+
+
+echo "Job finished: $(date +%F)"

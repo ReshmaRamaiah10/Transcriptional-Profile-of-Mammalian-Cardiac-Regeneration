@@ -1,0 +1,21 @@
+#!/bin/bash -l
+
+#$ -P bf528
+#$ -cwd
+#$ -j y
+#$ -pe mpi_16_tasks_per_node 16
+
+echo "Running job $JOB_ID"
+echo "Started: $(date +%F)"
+echo "Running in directory: $PWD"
+
+#your commands here
+
+#load needed alignment utilities
+module load cufflinks
+
+#cufflinks arguments
+cufflinks --compatible-hits-norm -G /project/bf528/project_2/reference/annot/mm9.gtf -b /project/bf528/project_2/reference/mm9.fa -u -o P0_1_cufflinks_real -p 16 /projectnb2/bf528/students/rkafrawi/Project_2_Real/part_4/P0_1_tophat_real/accepted_hits.bam
+
+
+echo "Job finished: $(date +%F)"

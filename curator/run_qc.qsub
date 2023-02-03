@@ -1,0 +1,15 @@
+#!/bin/bash -l
+
+#$ -P bf528
+#$ -cwd
+#$ -j y
+#$ -pe mpi_16_tasks_per_node 16
+
+echo "Running job $JOB_ID"
+echo "Started: $(date +%F)"
+echo "Running in directory: $PWD"
+
+# your commands here
+module load fastqc
+fastqc -f fastq -o /projectnb/bf528/users/tinman_2022/project_2/step_1_out /projectnb/bf528/users/tinman_2022/project_2/samples/P0_1_1.fastq /projectnb/bf528/users/tinman_2022/project_2/samples/P0_1_2.fastq
+echo "Job finished: $(date +%F)"

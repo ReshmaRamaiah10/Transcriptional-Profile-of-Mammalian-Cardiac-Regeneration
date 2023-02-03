@@ -1,0 +1,2 @@
+I have included the qsub scripts used to run cufflinks and cuffdiff as well as the R scripts used to filter
+and analyze the output files. This directory is further divided into 2 subdirectories: cufflinks and cuffdiff. 
